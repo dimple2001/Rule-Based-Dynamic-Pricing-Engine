@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Pricing Engine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+
+  <h1>Hotel Dynamic Pricing</h1>
+
+  <!-- Mode Toggle -->
+  <div class="toggle-row">
+    <button class="toggle-btn active" id="manualTab" onclick="switchMode('manual')">Manual</button>
+    <button class="toggle-btn" id="autoTab" onclick="switchMode('auto')">Auto Predict</button>
+  </div>
+
+  <label>Hotel</label>
+  <select id="hotel"></select>
+
+  <label>Season</label>
+  <select id="season">
+    <option value="peak">Peak (+25%)</option>
+    <option value="normal" selected>Normal</option>
+    <option value="off">Off (-20%)</option>
+  </select>
+
+  <label>Check-in Day</label>
+  <select id="checkin">
+    <option value="weekday">Weekday</option>
+    <option value="weekend">Weekend (+10%)</option>
+  </select>
+
+  <!-- Only visible in Manual mode -->
+  <div id="touristRow">
+    <label>Tourist Demand</label>
+    <select id="tourist">
+      <option value="low">Low (-10%)</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">High (+20%)</option>
+    </select>
+  </div>
+
+  <button id="actionBtn" onclick="handleSubmit()">Calculate Price</button>
+
+  <div class="result" id="result" style="display:none">
+    <h2 id="finalPrice"></h2>
+    <div id="breakdown"></div>
+  </div>
+
+</div>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
