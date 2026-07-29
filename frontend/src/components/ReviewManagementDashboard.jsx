@@ -18,7 +18,7 @@ const ReviewManagementDashboard = () => {
 
   const fetchReviews = async () => {
     try {
-      const response = await fetch('/api/reviews', {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API_URL || ''}/api/reviews`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -39,7 +39,7 @@ const ReviewManagementDashboard = () => {
     if (!window.confirm('Are you sure you want to delete this review?')) return;
     
     try {
-      const response = await fetch(`/api/reviews/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API_URL || ''}/api/reviews/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -59,7 +59,7 @@ const ReviewManagementDashboard = () => {
   const handleReply = async (id) => {
     if (!replyText.trim()) return;
     try {
-      const response = await fetch(`/api/reviews/${id}/reply`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API_URL || ''}/api/reviews/${id}/reply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

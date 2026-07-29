@@ -54,6 +54,13 @@ mongoose.connect(process.env.MONGO_URI || 'mongodb://127.0.0.1:27017/aureva', {
     console.log('Check if mongod is running on port 27017');
   });
 
+app.get('/', (req, res) => {
+  res.json({
+    status: 'success',
+    message: 'Rule-Based Dynamic Pricing Engine API is running 🚀'
+  });
+});
+
 app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/reviews', require('./routes/reviewRoutes'));
 

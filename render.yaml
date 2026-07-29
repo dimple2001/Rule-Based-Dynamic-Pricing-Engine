@@ -1,0 +1,24 @@
+services:
+  # Node.js backend (Auth / Reviews)
+  - type: web
+    name: rule-based-pricing-node-backend
+    env: node
+    rootDir: backend/node
+    buildCommand: npm install
+    startCommand: node server.js
+    envVars:
+      - key: PORT
+        value: 5002
+      - key: MONGO_URI
+        sync: false  # Will be configured in the Render Dashboard
+
+  # Flask backend (Pricing / ML engine)
+  - type: web
+    name: rule-based-pricing-flask-backend
+    env: python
+    rootDir: backend/flask
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PORT
+        value: 5001

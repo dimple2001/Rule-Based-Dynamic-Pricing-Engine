@@ -17,6 +17,10 @@ export default defineConfig({
       '/api/calculate-price': {
         target: 'http://localhost:5001',
         changeOrigin: true
+      },
+      '/api/calculate-prices-batch': {
+        target: 'http://localhost:5001',
+        changeOrigin: true
       }
     }
   }

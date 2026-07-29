@@ -56,7 +56,7 @@ const HotelList = ({ searchLocation }) => {
       });
 
       try {
-        const response = await fetch('/api/calculate-prices-batch', {
+        const response = await fetch(`${import.meta.env.VITE_FLASK_API_URL || ''}/api/calculate-prices-batch`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),

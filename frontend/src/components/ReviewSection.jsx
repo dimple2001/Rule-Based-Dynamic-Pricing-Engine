@@ -18,7 +18,7 @@ const ReviewSection = ({ hotelId, hotelRating, totalReviews }) => {
   const fetchReviews = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`/api/reviews/hotel/${hotelId}`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API_URL || ''}/api/reviews/hotel/${hotelId}`);
       if (response.ok) {
         const data = await response.json();
         setReviews(data);
@@ -42,7 +42,7 @@ const ReviewSection = ({ hotelId, hotelRating, totalReviews }) => {
     }
 
     try {
-      const response = await fetch('/api/reviews', {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API_URL || ''}/api/reviews`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

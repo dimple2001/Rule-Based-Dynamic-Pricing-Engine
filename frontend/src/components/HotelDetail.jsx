@@ -58,7 +58,7 @@ const HotelDetail = () => {
       let lastErr = null;
       for (let attempt = 0; attempt < 2; attempt++) {
         try {
-          const response = await fetch('/api/calculate-price', {
+          const response = await fetch(`${import.meta.env.VITE_FLASK_API_URL || ''}/api/calculate-price`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
